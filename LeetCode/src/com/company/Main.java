@@ -2,40 +2,66 @@ package com.company;
 
 import java.math.BigInteger;
 import java.util.*;
+import java.math.*;
 
 public class Main {
-   static   int minimumLength(String str) {
-       int s=0;
-       int e=str.length()-1;
-       while(s<e){
-           if(str.charAt(s)!=str.charAt(e)){
-               break;
-           }
-           if(str.charAt(s+1)==str.charAt(e))s++;
-           else if(str.charAt(e-1)==str.charAt(s))e--;
-           else{
-               e--;
-               s++;
-           }
-       }
-       if(e-s==0){
+
+   static int match(String a,String b){
+       if(a.equals(b)){
            return 0;
-       }else{
-           return e-s+1;
        }
+       int sum=0;
+       for (int i = 0; i < a.length(); i++) {
+           sum+=dis(b,a.charAt(i));
+       }
+       return sum;
    }
-    public static void main(String[] args) {
-      String s="011000111";
-      String[] arr=s.split("0");
-      int c=0;
-      for(int i=0;i< arr.length;i++){
-          int n=arr[i].trim().length();
-          c+=n*(n+1)/2;
-      }
-        System.out.println(c);
-        System.out.println(Arrays.toString(arr));
-        System.out.println(arr[1].trim().length());
+   static int dis(String a,char c){
+       int min=28;
+       for (int i = 0; i < a.length(); i++) {
+           min=Math.min(min,Math.abs(c-a.charAt(i)));
+       }
+       return min;
+   }
+
+   static int[] cyclic(int [] arr){
+       int i=0;
+       while (i< arr.length){
+           if(arr[i]!=arr[arr[i]-1]){
+               int curr=arr[i]-1;
+               int temp=arr[i];
+               arr[i]=arr[curr];
+               arr[curr]=temp;
+           }else {
+               i++;
+           }
+       }
+       return arr;
+   }
+
+    static int repeatedStringMatch(String a, String b) {
+        int count = 0;
+        StringBuilder sb = new StringBuilder();
+        while (sb.length() < b.length()) {
+            sb.append(a);
+            count++;
+        }
+        if(sb.toString().contains(b) )return count;
+        if(sb.append(a).toString().contains(b)) return ++count;
+        return -1;
     }
 
+    public static void main(String[] args) {
+//       Scanner input=new Scanner(System.in);
+//       int n=input.nextInt();
+//        for (int i = 0; i < n; i++) {
+//            String a=input.next();
+//            String b=input.next();
+//            System.out.println(match(a,b));
+//        }
+//        int[] arr={9,5,7,6,7,4,5,2,1};
+//        System.out.println(Arrays.toString(cyclic(arr)));
 
+        System.out.println(repeatedStringMatch("abcd","cdabcdab"));
+    }
 }
