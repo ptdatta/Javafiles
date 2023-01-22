@@ -141,7 +141,7 @@ public void postorder(Node root){
         tree1.insertTree(5);
         tree1.insertTree(7);
         tree1.insertTree(9);
-        tree1.deleteKey(7);
+        tree1.deleteKey(5);
         tree1.inOrder();
         System.out.println();
         tree1.preOrder();

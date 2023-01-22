@@ -14,6 +14,7 @@ public class ith_bit {
 
     public static void main(String[] args) {
         int n=9;
+        System.out.println(getbit(8,3));
         n=setbit(n,2);
         System.out.println(n);
         n=resetbit(n,3);
