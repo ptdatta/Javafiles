@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"com.company","c":"Sudoku_solver","l":"main(String[])","u":"main(java.lang.String[])"},{"p":"com.company","c":"Sudoku_solver","l":"Sudoku_solver()","u":"%3Cinit%3E()"}];updateSearchResults();
